@@ -15,14 +15,17 @@
   --bg-color-table-selected: var(--black);
   --bg-color-table-footer-selected: var(--brown);
   --text-color-header: var(--black);
-  --text-color-header-description: var(--gray);
-  --text-color-table-row-header: var(--black-lighten);
+  --text-color-header-description: var(--black-lighten);
+  --text-color-table-row-header: var(--black);
   --text-color-table: var(--black-lighten);
   --text-color-plan-name: var(--blue);
   --text-color-plan-price: var(--black);
-  --text-color-plan-period: var(--gray);
+  --text-color-plan-period: var(--black-lighten);
   --text-color-table-selected: var(--white);
   --text-color-footer: var(--blue);
+  --border-color-header: var(--gray-lighten);
+  --border-color-table: var(--gray-lighten);
+  --border-color-table-selected: var(--gray);
 
   /* font */
   --font-base:
@@ -72,4 +75,167 @@ a {
   .container {
     max-width: 1280px;
   }
+}
+
+/* header
+-------------------- */
+
+.header {
+  padding: 52px 92px;
+  text-align: center;
+  background-color: var(--bg-color-header);
+  background-image: url('/images/bg-pattern.png');
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid var(--border-color-header);
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-color-header);
+}
+
+.header__description {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: var(--text-color-header-description);
+}
+
+/* main
+-------------------- */
+
+.main {
+  padding: 16px 0 32px;
+}
+
+.pricing-table {
+  display: grid;
+  grid-template-areas: 'header enterprise popular';
+  grid-template-columns: 120px 228px 212px;
+}
+
+.pricing-table-columns {
+  display: grid;
+  grid-template-rows: 208px repeat(8, 52px) 76px;
+  border-radius: 12px;
+}
+
+.pricing-table-columns__header {
+  grid-area: header;
+  grid-template-columns: 120px;
+}
+
+.pricing-table-columns__header b {
+  padding: 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  font-weight: 600;
+
+  /* flex だと text-overflow: ellipsis がうまく動作しなかったので、line-height で上下中央寄せにする
+  関連: https://zenn.dev/bicstone/articles/flex-item-overflow-hidden
+  */
+  line-height: 52px;
+  color: var(--text-color-table-row-header);
+  white-space: nowrap;
+  background-color: var(--bg-color-table-row-header);
+  border-bottom: 1px solid var(--border-color-table);
+}
+
+.pricing-table-columns__header b:first-of-type {
+  border-top-left-radius: 12px;
+}
+
+.pricing-table-columns__header b:last-of-type {
+  border-bottom-left-radius: 12px;
+}
+
+.pricing-table-columns__enterprise {
+  grid-area: enterprise;
+}
+
+.pricing-table-columns__popular {
+  grid-area: popular;
+  color: var(--text-color-table-selected);
+  background-color: var(--bg-color-table-selected);
+}
+
+.pricing-table-columns__enterprise > span,
+.pricing-table-columns__popular > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-table-columns__enterprise > span {
+  border-bottom: 1px solid var(--border-color-table);
+}
+
+.pricing-table-columns__popular > span {
+  border-bottom: 1px solid var(--border-color-table-selected);
+}
+
+.pricing-table__plan-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.pricing-table__plan-name {
+  width: fit-content;
+  height: 24px;
+  padding: 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-plan-name);
+  border-radius: 20px;
+}
+
+.pricing-table-columns__popular .pricing-table__plan-name {
+  color: var(--text-color-table-selected);
+  background-color: var(--bg-color-table-plan-name);
+}
+
+.pricing-table__plan-price {
+  margin-top: 16px;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--text-color-plan-price);
+}
+
+.pricing-table-columns__popular .pricing-table__plan-price {
+  color: var(--text-color-table-selected);
+}
+
+.pricing-table__plan-period {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: var(--text-color-plan-period);
+}
+
+.pricing-table-columns__popular .pricing-table__plan-period {
+  color: var(--text-color-table-selected);
+}
+
+.pricing-table__start-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-footer);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.pricing-table-columns__popular .pricing-table__start-button {
+  color: var(--text-color-table-selected);
+  background-color: var(--bg-color-table-footer-selected);
 }
