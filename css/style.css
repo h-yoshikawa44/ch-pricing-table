@@ -162,14 +162,28 @@ a {
   background-color: var(--bg-color-table-selected);
 }
 
+.pricing-table-columns__team {
+  display: none;
+  grid-area: team;
+}
+
+.pricing-table-columns__free {
+  display: none;
+  grid-area: free;
+}
+
 .pricing-table-columns__enterprise > span,
-.pricing-table-columns__popular > span {
+.pricing-table-columns__popular > span,
+.pricing-table-columns__team > span,
+.pricing-table-columns__free > span {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.pricing-table-columns__enterprise > span {
+.pricing-table-columns__enterprise > span,
+.pricing-table-columns__team > span,
+.pricing-table-columns__free > span {
   border-bottom: 1px solid var(--border-color-table);
 }
 
