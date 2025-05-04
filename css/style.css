@@ -103,6 +103,12 @@ a {
   color: var(--text-color-header-description);
 }
 
+@media (width >= 1024px) {
+  .header {
+    padding: 52px 332px;
+  }
+}
+
 /* main
 -------------------- */
 
@@ -124,7 +130,6 @@ a {
 
 .pricing-table-columns__header {
   grid-area: header;
-  grid-template-columns: 120px;
 }
 
 .pricing-table-columns__header b {
@@ -250,4 +255,32 @@ a {
 .pricing-table-columns__popular .pricing-table__start-link-button {
   color: var(--text-color-table-selected);
   background-color: var(--bg-color-table-footer-selected);
+}
+
+@media (width >= 1024px) {
+  .main {
+    padding: 64px 0 88px;
+  }
+
+  .pricing-table {
+    display: grid;
+    grid-template-areas: 'header team popular enterprise';
+    grid-template-columns: 212px 240px 220px 244px;
+  }
+
+  .pricing-table-columns__team {
+    display: grid;
+  }
+
+  .pricing-table-columns__team > .pricing-table__plan-header {
+    padding: 24px 24px 24px 44px;
+  }
+
+  .pricing-table-columns__team > span {
+    padding-left: 20px;
+  }
+
+  .pricing-table-columns__team > .pricing-table__start-link-button {
+    padding-left: 20px;
+  }
 }
