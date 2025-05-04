@@ -1,101 +1,326 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgb(255 255 255 / 87%);
-  color-scheme: light dark;
-  background-color: #242424;
+  --black: #121826;
+  --black-lighten: #4d5562;
+  --gray: #4d556233;
+  --gray-lighten: #e5e7eb;
+  --white-darken: #f8fafc;
+  --white: #fff;
+  --blue: #263fa9;
+  --brown: #7c4f1e;
+
+  /* color-map */
+  --bg-color-header: var(--white-darken);
+  --bg-color-table-row-header: var(--white-darken);
+  --bg-color-table-plan-name: var(--blue);
+  --bg-color-table-selected: var(--black);
+  --bg-color-table-footer-selected: var(--brown);
+  --text-color-header: var(--black);
+  --text-color-header-description: var(--black-lighten);
+  --text-color-table-row-header: var(--black);
+  --text-color-table: var(--black-lighten);
+  --text-color-plan-name: var(--blue);
+  --text-color-plan-price: var(--black);
+  --text-color-plan-period: var(--black-lighten);
+  --text-color-table-selected: var(--white);
+  --text-color-footer: var(--blue);
+  --border-color-header: var(--gray-lighten);
+  --border-color-table: var(--gray-lighten);
+  --border-color-table-selected: var(--gray);
+
+  /* font */
+  --font-base:
+    'Be Vietnam Pro', system-ui, 'Avenir', 'Helvetica', 'Arial', sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-base);
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: inherit;
   text-decoration: inherit;
 }
 
-a:hover {
-  color: #535bf2;
-}
+/* common
+-------------------- */
 
-body {
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  margin: 0;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  padding: 2rem;
+.container {
+  max-width: 640px;
+  padding: 0 3.75%;
   margin: 0 auto;
+}
+
+@media (width >= 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (width >= 1024px) {
+  .container {
+    max-width: 1024px;
+    padding: 0 3.5%;
+  }
+}
+
+@media (width >= 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* header
+-------------------- */
+
+.header {
+  padding: 52px 92px;
   text-align: center;
+  background-color: var(--bg-color-header);
+  background-image: url('/images/bg-pattern.png');
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid var(--border-color-header);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  transition: filter 300ms;
-  will-change: filter;
+.header__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-color-header);
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.header__description {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: var(--text-color-header-description);
 }
 
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+@media (width >= 1024px) {
+  .header {
+    padding: 52px 332px;
+  }
 }
 
-.card {
-  padding: 2em;
+/* main
+-------------------- */
+
+.main {
+  padding: 16px 0 32px;
 }
 
-.read-the-docs {
-  color: #888;
+.pricing-table {
+  display: grid;
+  grid-template-areas: 'header enterprise popular';
+  grid-template-columns: 120px 228px 212px;
 }
 
-button {
-  padding: 0.6em 1.2em;
-  font-family: inherit;
-  font-size: 1em;
-  font-weight: 500;
-  cursor: pointer;
-  background-color: #1a1a1a;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  transition: border-color 0.25s;
+.pricing-table-columns {
+  display: grid;
+  grid-template-rows: 208px repeat(8, 52px) 76px;
+  border-radius: 20px;
 }
 
-button:hover {
-  border-color: #646cff;
+.pricing-table-columns:not(.pricing-table-columns__header):hover {
+  margin: -1px;
+  border: 1px solid var(--border-color-table-selected);
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.pricing-table-columns__header {
+  grid-area: header;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #fff;
+.pricing-table-columns__header b {
+  padding: 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  font-weight: 600;
+
+  /* flex だと text-overflow: ellipsis がうまく動作しなかったので、line-height で上下中央寄せにする
+  関連: https://zenn.dev/bicstone/articles/flex-item-overflow-hidden
+  */
+  line-height: 52px;
+  color: var(--text-color-table-row-header);
+  white-space: nowrap;
+  background-color: var(--bg-color-table-row-header);
+  border-bottom: 1px solid var(--border-color-table);
+}
+
+.pricing-table-columns__header b:first-of-type {
+  border-top-left-radius: 12px;
+}
+
+.pricing-table-columns__header b:last-of-type {
+  border-bottom-left-radius: 12px;
+}
+
+.pricing-table-columns__enterprise {
+  grid-area: enterprise;
+}
+
+.pricing-table-columns__popular {
+  grid-area: popular;
+  color: var(--text-color-table-selected);
+  background-color: var(--bg-color-table-selected);
+}
+
+.pricing-table-columns__team {
+  display: none;
+  grid-area: team;
+}
+
+.pricing-table-columns__free {
+  display: none;
+  grid-area: free;
+}
+
+.pricing-table-columns__enterprise > span,
+.pricing-table-columns__popular > span,
+.pricing-table-columns__team > span,
+.pricing-table-columns__free > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-table-columns__enterprise > span,
+.pricing-table-columns__team > span,
+.pricing-table-columns__free > span {
+  border-bottom: 1px solid var(--border-color-table);
+}
+
+.pricing-table-columns__popular > span {
+  border-bottom: 1px solid var(--border-color-table-selected);
+}
+
+.pricing-table__plan-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.pricing-table__plan-name {
+  width: fit-content;
+  height: 24px;
+  padding: 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-plan-name);
+  border-radius: 20px;
+}
+
+.pricing-table-columns__popular .pricing-table__plan-name {
+  color: var(--text-color-table-selected);
+  background-color: var(--bg-color-table-plan-name);
+}
+
+.pricing-table__plan-price {
+  margin-top: 16px;
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--text-color-plan-price);
+}
+
+.pricing-table-columns__popular .pricing-table__plan-price {
+  color: var(--text-color-table-selected);
+}
+
+.pricing-table__plan-period {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: var(--text-color-plan-period);
+}
+
+.pricing-table-columns__popular .pricing-table__plan-period {
+  color: var(--text-color-table-selected);
+}
+
+.pricing-table__start-link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color-footer);
+  background-color: transparent;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.pricing-table-columns__popular .pricing-table__start-link-button {
+  color: var(--text-color-table-selected);
+  background-color: var(--bg-color-table-footer-selected);
+}
+
+@media (width >= 1024px) {
+  .main {
+    padding: 64px 0 88px;
   }
 
-  a:hover {
-    color: #747bff;
+  .pricing-table {
+    display: grid;
+    grid-template-areas: 'header team popular enterprise';
+    grid-template-columns: 212px 240px 220px 244px;
   }
 
-  button {
-    background-color: #f9f9f9;
+  .pricing-table-columns__team {
+    display: grid;
+  }
+
+  .pricing-table-columns__team > .pricing-table__plan-header {
+    padding: 24px 24px 24px 44px;
+  }
+
+  .pricing-table-columns__team > span {
+    padding-left: 20px;
+  }
+
+  .pricing-table-columns__team > .pricing-table__start-link-button {
+    padding-left: 20px;
+  }
+}
+
+@media (width >= 1280px) {
+  .pricing-table {
+    grid-template-areas: 'header free team popular enterprise';
+    grid-template-columns: 216px 240px 220px 220px 244px;
+  }
+
+  .pricing-table-columns__team > .pricing-table__plan-header {
+    padding: 24px;
+  }
+
+  .pricing-table-columns__team > span {
+    padding-left: 0;
+  }
+
+  .pricing-table-columns__team > .pricing-table__start-link-button {
+    padding-left: 0;
+  }
+
+  .pricing-table-columns__free {
+    display: grid;
+  }
+
+  .pricing-table-columns__free > .pricing-table__plan-header {
+    padding: 24px 24px 24px 44px;
+  }
+
+  .pricing-table-columns__free > span {
+    padding-left: 20px;
+  }
+
+  .pricing-table-columns__free > .pricing-table__start-link-button {
+    padding-left: 20px;
   }
 }
