@@ -126,6 +126,7 @@ a {
   display: grid;
   grid-template-areas: 'header enterprise popular';
   grid-template-columns: 120px 228px 212px;
+  overflow-x: auto;
 }
 
 .pricing-table-columns {
