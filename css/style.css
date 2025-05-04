@@ -125,7 +125,7 @@ a {
 .pricing-table-columns {
   display: grid;
   grid-template-rows: 208px repeat(8, 52px) 76px;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .pricing-table-columns__header {
@@ -248,8 +248,8 @@ a {
   font-weight: 600;
   color: var(--text-color-footer);
   background-color: transparent;
-  border-bottom-right-radius: 12px;
-  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 .pricing-table-columns__popular .pricing-table__start-link-button {
@@ -281,6 +281,41 @@ a {
   }
 
   .pricing-table-columns__team > .pricing-table__start-link-button {
+    padding-left: 20px;
+  }
+}
+
+@media (width >= 1280px) {
+  .pricing-table {
+    grid-template-areas: 'header free team popular enterprise';
+    grid-template-columns: 216px 240px 220px 220px 244px;
+  }
+
+  .pricing-table-columns__team > .pricing-table__plan-header {
+    padding: 24px;
+  }
+
+  .pricing-table-columns__team > span {
+    padding-left: 0;
+  }
+
+  .pricing-table-columns__team > .pricing-table__start-link-button {
+    padding-left: 0;
+  }
+
+  .pricing-table-columns__free {
+    display: grid;
+  }
+
+  .pricing-table-columns__free > .pricing-table__plan-header {
+    padding: 24px 24px 24px 44px;
+  }
+
+  .pricing-table-columns__free > span {
+    padding-left: 20px;
+  }
+
+  .pricing-table-columns__free > .pricing-table__start-link-button {
     padding-left: 20px;
   }
 }
