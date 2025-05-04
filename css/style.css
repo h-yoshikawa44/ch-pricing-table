@@ -109,6 +109,12 @@ a {
   }
 }
 
+@media (width >= 1280px) {
+  .header {
+    padding: 52px 412px;
+  }
+}
+
 /* main
 -------------------- */
 
