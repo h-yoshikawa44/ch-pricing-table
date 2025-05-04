@@ -8,14 +8,14 @@
 
 <div align="center">
   <h3>
-    <!-- <a href="{https://your-demo-link.your-domain}">
+    <a href="https://h-yoshikawa44.github.io/ch-pricing-table/">
       Demo
     </a>
-    <span> | </span> -->
-    <!-- <a href="{https://your-url-to-the-solution}">
+    <span> | </span>
+    <a href="https://devchallenges.io/solution/49696">
       Solution
     </a>
-    <span> | </span> -->
+    <span> | </span>
     <a href="https://devchallenges.io/challenge/pricing-table-section-challenge">
       Challenge
     </a>
@@ -50,17 +50,18 @@ Introduce your projects by taking a screenshot or a gif. Try to tell visitors a 
 
 ### Desktop
 
-（スクショを貼る）
+![desktop](./screenshots/desktop.png)
 
 ### Mobile
 
-（スクショを貼る）
+<img src="./screenshots/mobile.png" width="50%">
 
 ### What I learned
 
 <!-- Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge. -->
 
-（後で書く）
+- How to build a table layout using Grid.
+- text-overflow: ellipsis sometimes does not work well with flex and how to fix it.
 
 ### Built with
 
@@ -83,19 +84,19 @@ Other major libraries
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges-dashboard) challenge.
 
-- [ ] Create a pricing table section website with 4 columns representing 4 options, each including price, features, and a button.
-- [ ] Utilize styling techniques in CSS to structure the layout.
-- [ ] Ensure the layout is responsive and adapts to different screen sizes.
-- [ ] Apply clean spacing and typography to enhance the overall design.
-- [ ] Make the website accessible and user-friendly.
-- [ ] Test the website on different devices and screen sizes to ensure responsiveness.
-- [ ] Optimize the website for performance and loading speed.
-- [ ] Use semantic HTML elements to structure the content and improve SEO.
-- [ ] Apply CSS styles to enhance the visual presentation of the pricing table elements.
-- [ ] (Optional) Add hover effects or animations to make the website more interactive.
-- [ ] Validate the HTML and CSS code to ensure it follows best practices and standards.
-- [ ] Document the code and provide clear instructions on how to run and use the website.
-- [ ] Deploy the website to make it accessible for everyone.
+- [x] Create a pricing table section website with 4 columns representing 4 options, each including price, features, and a button.
+- [x] Utilize styling techniques in CSS to structure the layout.
+- [x] Ensure the layout is responsive and adapts to different screen sizes.
+- [x] Apply clean spacing and typography to enhance the overall design.
+- [x] Make the website accessible and user-friendly.
+- [x] Test the website on different devices and screen sizes to ensure responsiveness.
+- [x] Optimize the website for performance and loading speed.
+- [x] Use semantic HTML elements to structure the content and improve SEO.
+- [x] Apply CSS styles to enhance the visual presentation of the pricing table elements.
+- [x] (Optional) Add hover effects or animations to make the website more interactive.
+- [x] Validate the HTML and CSS code to ensure it follows best practices and standards.
+- [x] Document the code and provide clear instructions on how to run and use the website.
+- [x] Deploy the website to make it accessible for everyone.
 
 ## How To Use
 
@@ -113,7 +114,8 @@ npm run dev
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For exmpale -->
 
-（後で書く）
+- [MDN - text-overflow](https://developer.mozilla.org/ja/docs/Web/CSS/text-overflow)
+- [Flex item の overflow: hidden が効かない問題の対処方法](https://zenn.dev/bicstone/articles/flex-item-overflow-hidden)
 
 ## Author
 
